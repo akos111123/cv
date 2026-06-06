@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Önéletrajz - Galló Ákos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- ALAP BEÁLLÍTÁSOK --- */
+        :root {
+            --bg-body: #020617; /* Very dark slate */
+            --bg-card: #0f172a; /* Deep slate blue */
+            --bg-sidebar: #1e293b; /* Slightly lighter slate for sidebar */
+            --accent-primary: #38bdf8; /* Cyan */
+            --accent-secondary: #818cf8; /* Indigo */
+            --text-main: #f8fafc; /* White/Light gray */
+            --text-muted: #94a3b8; /* Muted gray */
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+        }
+
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- FŐ TÁROLÓ (GRID LAYOUT) --- */
+        .resume-container {
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: row;
+            max-width: 1100px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- BAL SÁV (SIDEBAR) --- */
+        .sidebar {
+            background-color: var(--bg-sidebar);
+            width: 35%;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--border-color);
+            margin: 0 auto 20px auto;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-section h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+
+        .profile-section h1 span {
+            color: var(--accent-primary);
+        }
+
+        .profile-section .title {
+            color: var(--accent-secondary);
+            font-weight: 500;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Kapcsolat, Készségek, Nyelvek modulok */
+        .sidebar-module h3 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .contact-list i {
+            color: var(--accent-primary);
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skills-list li::before {
+            content: '▹';
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .languages-list {
+            list-style: none;
+        }
+
+        .languages-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .languages-list span.level {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+
+        /* --- JOBB SÁV (MAIN CONTENT) --- */
+        .main-content {
+            width: 65%;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        .about-text {
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        /* Skill BARS (Programozási nyelvek) */
+        .tech-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .bar-item {
+            width: 100%;
+        }
+
+        .bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 8px;
+            background-color: var(--bg-body);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 4px;
+        }
+
+        /* Tech TAGS (Technológiák és eszközök) */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            border-color: var(--accent-primary);
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Timeline (Tanulmányok & Projektek) */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            height: calc(100% - 10px);
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            border: 3px solid var(--accent-primary);
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: var(--accent-secondary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .timeline-content {
+            font-size: 15px;
+        }
+        
+        .timeline-content ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        /* --- RESPONSZÍV BEÁLLÍTÁSOK --- */
+        @media (max-width: 900px) {
+            .resume-container {
+                flex-direction: column;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+    
+    <aside class="sidebar">
+        
+        <div class="profile-section">
+            <div class="profile-img">
+                <img src="https://ui-avatars.com/api/?name=Gallo+Akos&background=0f172a&color=38bdf8&size=200&font-size=0.33&bold=true" alt="Galló Ákos">
+            </div>
+            <h1>Galló <span>Ákos</span></h1>
+            <div class="title">Mérnökinformatikus Hallgató</div>
+        </div>
+
+        <div class="sidebar-module">
+            <h3>Kapcsolat</h3>
+            <ul class="contact-list">
+                <li><i class="fa-solid fa-phone"></i> +36 30 858 0492</li>
+                <li><i class="fa-solid fa-envelope"></i> galloakos1@gmail.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> Budapest, Győr</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-module">
+            <h3>Személyes Készségek</h3>
+            <ul class="skills-list">
+                <li>Gyors tanulás és adaptáció</li>
+                <li>Analitikus, logikai gondolkozás</li>
+                <li>Precíz, megbízható munkavégzés</li>
+                <li>Felelősségteljes hozzáállás</li>
+                <li>Önálló feladatmegoldás</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-module">
+            <h3>Nyelvtudás</h3>
+            <ul class="languages-list">
+                <li><span>Angol</span> <span class="level">C1 (Felsőfok)</span></li>
+                <li><span>Olasz</span> <span class="level">B1 (Alapfok)</span></li>
+            </ul>
+        </div>
+        
+    </aside>
+
+    <main class="main-content">
+
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-user"></i> Bemutatkozás</h2>
+            <p class="about-text">
+                A BME másodéves mérnökinformatikus hallgatójaként három éve foglalkozom programozással. Erős alapokkal rendelkezem Python, C és <strong>C++</strong> nyelveken, ismerem az SQL-t és a Linux környezetet, valamint betekintést szereztem a számítógép-architektúrák és a digitális technika területébe (Verilog, Assembly). Gyorsan tanulok, precízen dolgozom, és szívesen működöm együtt csapatban. Folyamatosan keresem a kihívásokat, hogy tovább bővítsem a szakmai ismereteimet.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-code"></i> Technikai Ismeretek</h2>
+            
+            <div style="margin-bottom: 25px;">
+                <h4 style="margin-bottom: 15px; color: var(--text-main); font-size: 16px;">Programozási nyelvek</h4>
+                <div class="tech-bars">
+                    <div class="bar-item">
+                        <div class="bar-header"><span>Python</span> <span>Biztos alapok</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-header"><span>C nyelv</span> <span>Biztos alapok</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-header"><span>C++</span> <span>Biztos alapok</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <h4 style="margin-bottom: 15px; color: var(--text-main); font-size: 16px;">Technológiák és Eszközök</h4>
+                <div class="tags-container">
+                    <span class="tag">SQL</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Verilog</span>
+                    <span class="tag">Assembly</span>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="margin-bottom: 15px; color: var(--text-main); font-size: 16px;">Egyéb Szakmai Ismeretek</h4>
+                <div class="tags-container">
+                    <span class="tag">Algoritmusok</span>
+                    <span class="tag">Adatszerkezetek</span>
+                    <span class="tag">OOP Alapok</span>
+                    <span class="tag">Hibakeresés & Tesztelés</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Tanulmányok</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Jelenleg</div>
+                    <div class="timeline-title">Budapesti Műszaki Egyetem (BME)</div>
+                    <div class="timeline-subtitle">Mérnökinformatikus BSc</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <div class="timeline-title">Czuczor Gergely Bencés Gimnázium</div>
+                    <div class="timeline-subtitle">Érettségi bizonyítvány</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-folder-open"></i> Egyetemi Projektek</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Szimulációs Játék Fejlesztése</div>
+                    <div class="timeline-subtitle">C nyelv</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Önálló játékalkalmazás tervezése és megvalósítása.</li>
+                            <li>Adatszerkezetek gyakorlati alkalmazása a játékmechanika memóriahatékony kezeléséhez.</li>
+                            <li>Összetett játékmenet-logika és állapotkezelés implementálása.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
